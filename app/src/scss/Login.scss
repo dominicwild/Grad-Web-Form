@@ -1,5 +1,74 @@
 body {
-    width: 100vw;
-    height: 100vh;
-    background-color: grey;
+  width: 100vw;
+  height: 100vh;
+}
+
+.background {
+  background-color: rgba(0, 0, 0, 0.342);
+  background-image: url("../img/lantern.jpg");
+  background-size: cover;
+  background-blend-mode: multiply;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+
+  div {
+    background-color: white;
+    padding: 1em;
+
+    border-radius: 1rem;
+  }
+
+  .inputs {
+    padding: 0.25em;
+  }
+ 
+  .footer {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+  }
+
+}
+
+.login-btn-container {
+
+  display:flex;
+  justify-content: center;
+  align-items: center;
+
+   button {
+    background-color: #ffed00;
+    border: none;
+    color: black;
+    padding: 0.75em 2em;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.25em;
+    font-weight: bold;
+    margin: 4px 2px;
+    cursor: pointer;
+    transition-property: background-color, color;
+    transition-duration: 0.2s;
+
+    &:hover {
+      background-color: black;
+      color: yellow;
+    }
+  }
+}
+
+h1 {
+  text-align: center;
+}
+
+label {
+  width: 6em;
 }

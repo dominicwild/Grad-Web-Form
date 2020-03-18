@@ -1,6 +1,95 @@
 body {
   width: 100vw;
   height: 100vh;
-  background-color: grey;
+}
+
+.background {
+  background-color: rgba(0, 0, 0, 0.342);
+  background-image: url("../img/lantern.jpg");
+  background-size: cover;
+  background-blend-mode: multiply;
+}
+
+.login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100vh;
+}
+
+.login div {
+  background-color: white;
+  padding: 1em;
+  border-radius: 1rem;
+}
+
+.login .inputs {
+  padding: 0.25em;
+}
+
+.login .footer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 5px;
+}
+
+.login-btn-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.login-btn-container button {
+  background-color: #ffed00;
+  border: none;
+  color: black;
+  padding: 0.75em 2em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.25em;
+  font-weight: bold;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-property: background-color, color;
+  transition-property: background-color, color;
+  -webkit-transition-duration: 0.2s;
+          transition-duration: 0.2s;
+}
+
+.login-btn-container button:hover {
+  background-color: black;
+  color: yellow;
+}
+
+h1 {
+  text-align: center;
+}
+
+label {
+  width: 6em;
 }
 /*# sourceMappingURL=Login.css.map */
