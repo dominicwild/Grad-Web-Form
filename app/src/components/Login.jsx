@@ -35,7 +35,7 @@ class Login extends Component {
               </div>
 
               <div className="login-btn-container">
-                <button onClick={this.login}>Log in</button>
+                <button className="btn" onClick={this.login}>Log in</button>
               </div>
 
               <div className="footer">

@@ -1,9 +1,74 @@
 .form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 
-    
-
-    label {
-        display:block;
+  .form-header {
+    h1 {
+      text-align: center;
+      font-size: 2.9em;
     }
 
+    h2,
+    h3 {
+      color: #9e9e9e;
+      font-weight: lighter;
+    }
+
+    h2 {
+      margin-bottom: 0em;
+    }
+
+    h3 {
+      font-size: 0.8em;
+    }
+  }
+
+  input,
+  select {
+    width: 100%;
+    border-radius: 0.5em;
+    border: solid #bdbdbd 0.1em;
+    padding: 0.1em;
+    padding-left: 0.5em;
+  }
+
+  label {
+    // $margin-y: 0.25em;
+    display: block;
+    margin-bottom: -0.1em;
+    // margin-top: $margin-y;
+  }
+
+  .field + .field {
+    margin-top: 0.25em;
+  }
+
+  select {
+      padding: 0.5em;
+
+      option {
+          padding: 1em;
+      }
+  }
+
+  .form-fields {
+      margin-bottom: 1em;
+
+        .required label::after {
+            content:" *";
+            display:inline;
+        }
+  }
+
+  .btn-container {
+      display:flex;
+      justify-content: center;
+      align-items: center;
+
+      .btn {
+          padding: 0.5em 1em;
+      }
+  }
 }

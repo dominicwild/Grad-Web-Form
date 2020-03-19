@@ -70,11 +70,11 @@ class Form extends Component {
       });
   };
 
-  renderSelect = (id, labelText, list) => {
+  renderSelect = (id, labelText, defaultOptionText, list) => {
     return (
-      <div>
+      <div className="field">
         <label htmlFor={id}>{labelText}:</label>
-        <select type="text" id={id} name={id} disabled={list === undefined}>
+        <select type="text" id={id} name={id} disabled={list === undefined} defaultValue={3}>
           {(() => {
             if (list) {
               return list.map(list => {
@@ -84,52 +84,89 @@ class Form extends Component {
               return <option>Loading...</option>;
             }
           })()}
+
+          <option selected> {defaultOptionText} </option>
         </select>
       </div>
     );
   };
+
+  submit = (event) => {
+    
+    if(document.getElementById("form").checkValidity()){
+        const firstName = document.getElementById("firstName").value;
+        const lastName = document.getElementById("lastName").value;
+        const GenderId = document.getElementById("gender").value
+        const email = document.getElementById("email").value
+        const mobile = document.getElementById("mobile").value
+        const StudyFieldId = document.getElementById("fieldOfStudy").value
+        const StreamId = document.getElementById("stream").value
+
+        fetch("/api/user", {
+            method: "post",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: {firstName,lastName,GenderId,email,mobile,StudyFieldId,StreamId}
+        }).then(res => {
+            if(res.ok){
+                return res.json();
+            } else {
+                console.error("Failed to submit form. " + res.statusText);
+            }
+        }).then(data => {
+            if(data.success){
+                
+            }
+        })
+    }
+
+  }
 
   render() {
     const { genders, streams, studyFields } = this.state;
 
     return (
       <div className="form">
-        <div className="form-container">
-          <div>
+        <form className="form-container" id="form" onSubmit={(e) => e.preventDefault()}>
+          <div className="form-header">
             <h1>DXC Beacon</h1>
             <h2>Please fill out the fields below:</h2>
             <h3>* required field</h3>
           </div>
 
-          <div>
-            <div>
+          <div className="form-fields">
+            <div className="field required">
               <label htmlFor="firstName">First Name:</label>
-              <input type="text" id="firstName" name="firstName" />
+              <input type="text" id="firstName" name="firstName" required/>
             </div>
 
-            <div>
+            <div className="field required">
               <label htmlFor="lastName">Last Name:</label>
-              <input type="text" id="lastName" name="lastName" />
+              <input type="text" id="lastName" name="lastName" required/>
             </div>
 
-            {this.renderSelect("gender", "Gender", genders)}
-            {/* <List id="gender" labelText="Gender" list={genders} /> */}
+            {this.renderSelect("gender", "Gender", "Select your gender", genders)}
 
-            <div>
+            <div className="field required">
               <label htmlFor="email">Email:</label>
-              <input type="text" id="email" name="email" />
+              <input type="email" id="email" name="email" required/>
             </div>
 
-            <div>
+            <div className="field">
               <label htmlFor="mobile">Mobile Number:</label>
               <input type="text" id="mobile" name="mobile" />
             </div>
 
-            {this.renderSelect("fieldOfStudy", "Field of Study", studyFields)}
+            {this.renderSelect("fieldOfStudy", "Field of Study", "Select the field you study", studyFields)}
 
-            {this.renderSelect("streams", "Preferred Role", streams)}
+            {this.renderSelect("stream", "Preferred Role", "Select the type of role you're interested in", streams)}
           </div>
-        </div>
+
+          <div className="btn-container">
+              <button className="btn" onClick={this.submit}>Submit</button>
+          </div>
+        </form>
       </div>
     );
   }

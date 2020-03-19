@@ -17,15 +17,15 @@ router.get("/genders", (req, res) => {
     genders: [
       {
         id: 1,
-        name: "Male"
+        name: "Prefer not to say"
       },
       {
         id: 2,
-        name: "Female"
+        name: "Male"
       },
       {
         id: 3,
-        name: "Prefer not to say"
+        name: "Female"
       },
       {
         id: 4,
@@ -37,10 +37,11 @@ router.get("/genders", (req, res) => {
 
 router.post("/user", (req, res) => {
   data = req.body;
-
-  if (data.firstName && data.lastName && data.GenderId && data.email && data.StudyFieldId && data.StreamId && data.credential && data.LocationId) {
+  //data.firstName && data.lastName && data.GenderId && data.email && data.StudyFieldId && data.StreamId && data.credential && data.LocationId
+  if (data.firstName && data.lastName && data.email) {
     return res.status(200).send({
-      msg: "Data not successfully uploaded."
+      msg: "Data successfully uploaded.",
+      data
     });
   } else {
     return res.status(400).send({

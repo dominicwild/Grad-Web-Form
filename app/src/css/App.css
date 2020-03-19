@@ -44,4 +44,27 @@
 h1 {
   font-family: WalsheimPro;
 }
+
+.btn {
+  background-color: #ffed00;
+  border: none;
+  color: black;
+  padding: 0.75em 2em;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 1.25em;
+  font-weight: bold;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-property: background-color, color;
+  transition-property: background-color, color;
+  -webkit-transition-duration: 0.2s;
+          transition-duration: 0.2s;
+}
+
+.btn:hover {
+  background-color: black;
+  color: yellow;
+}
 /*# sourceMappingURL=App.css.map */
