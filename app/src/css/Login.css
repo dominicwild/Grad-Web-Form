@@ -50,7 +50,20 @@ body {
   padding: 5px;
 }
 
-.login-btn-container {
+.login .footer svg {
+  width: auto;
+  height: 3rem;
+}
+
+.login h1 {
+  text-align: center;
+}
+
+.login label {
+  width: 6em;
+}
+
+.login .login-btn-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -62,7 +75,7 @@ body {
           align-items: center;
 }
 
-.login-btn-container button {
+.login .login-btn-container button {
   background-color: #ffed00;
   border: none;
   color: black;
@@ -80,16 +93,8 @@ body {
           transition-duration: 0.2s;
 }
 
-.login-btn-container button:hover {
+.login .login-btn-container button:hover {
   background-color: black;
   color: yellow;
-}
-
-h1 {
-  text-align: center;
-}
-
-label {
-  width: 6em;
 }
 /*# sourceMappingURL=Login.css.map */

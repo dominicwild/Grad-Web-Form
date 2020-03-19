@@ -1,8 +1,22 @@
 import React, { Component } from "react";
 import "../css/Login.css";
-import logo from "../img/DXC_Technology_logo.svg"
+import SVG from "react-inlinesvg";
+import logo from "../img/DXC_Technology_logo.svg";
+import { navigate } from "@reach/router";
 
 class Login extends Component {
+  login = async () => {
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    console.log({ username, password });
+    const success = await this.props.login({ username, password });
+    console.log(`Success: ${success}`);
+    if (success) {
+      navigate("/form");
+    }
+  };
+
   render() {
     return (
       <div className="background">
@@ -21,13 +35,12 @@ class Login extends Component {
               </div>
 
               <div className="login-btn-container">
-                <button>Log in</button>
+                <button onClick={this.login}>Log in</button>
               </div>
 
               <div className="footer">
-                <img src={logo} />
+                <SVG src={logo} />
               </div>
-              
             </div>
           </div>
         </div>

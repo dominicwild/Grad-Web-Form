@@ -3,14 +3,16 @@ const credential = "SECRET";
 
 router.post("/login", (req, res) => {
   credentials = req.body;
-  if (credential.username && credential.password) {
+  console.log(req.body)
+  console.log(`Got credentials user: ${credentials.username} pass: ${credentials.password}`);
+  if (credentials.username && credentials.password) {
     return res.status(200).send({ credential });
   } else {
-    return res.status(404).send({ errMsg: "Credentials invalid or not supplied." });
+    return res.status(400).send({ errMsg: "Credentials invalid or not supplied." });
   }
 });
 
-router.get("/gender", (req, res) => {
+router.get("/genders", (req, res) => {
   return res.status(200).send({
     genders: [
       {
@@ -42,14 +44,14 @@ router.post("/user", (req, res) => {
     });
   } else {
     return res.status(400).send({
-        msg: "Data is missing and was not uploaded."
-      });
+      msg: "Data is missing and was not uploaded."
+    });
   }
 });
 
 router.get("/studyFields", (req, res) => {
   return res.status(200).send({
-    locations: [
+    studyFields: [
       {
         id: 1,
         name: "Computer Science"
@@ -88,6 +90,21 @@ router.get("/locations", (req, res) => {
       {
         id: 4,
         name: "Lancaster"
+      }
+    ]
+  });
+});
+
+router.get("/streams", (req, res) => {
+  return res.status("200").send({
+    streams: [
+      {
+        id: 1,
+        name: "General"
+      },
+      {
+        id: 2,
+        name: "Technical"
       }
     ]
   });
