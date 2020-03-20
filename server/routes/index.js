@@ -81,19 +81,39 @@ router.get("/locations", (req, res) => {
     locations: [
       {
         id: 1,
-        name: "Edgehill"
+        name: "Edgehill",
+        latitude: 53.5560,
+        longitude: 2.8707
       },
       {
         id: 2,
-        name: "Chorley"
+        name: "Chorley",
+        latitude: 53.6535,
+        longitude: 2.6326
       },
       {
         id: 3,
-        name: "Newcastle"
+        name: "Newcastle",
+        latitude: 54.9792,
+        longitude: 1.6147
+      },
+      {
+        id: 31,
+        name: "Manchester",
+        latitude: 53.4668,
+        longitude: 2.2339
+      },
+      {
+        id: 131,
+        name: "Liverpool",
+        latitude: 53.4048,
+        longitude: 2.9653
       },
       {
         id: 4,
-        name: "Lancaster"
+        name: "Lancaster",
+        latitude: 54.0104,
+        longitude: 2.7877
       }
     ]
   });

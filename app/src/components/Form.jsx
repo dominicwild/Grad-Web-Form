@@ -21,8 +21,16 @@ class Form extends Component {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(location => {
         const c = location.coords;
+        const { locations } = this.state;
 
         console.log(`Position is: ${c.latitude}, ${c.longitude} with accuracy: ${c.accuracy}`);
+
+        if (locations) {
+          locations.forEach(location => {
+              const d = this.distance(c, location)
+              console.log(`Distance to ${location.name} is ${d}`);
+          });
+        }
       });
     }
     setTimeout(this.getUserLocation, 500);
@@ -97,8 +105,8 @@ class Form extends Component {
           console.error("Failed to get genders ", res.statusText);
         }
       })
-      .then(data => {
-        this.setState({ locations: data });
+      .then(({locations}) => {
+        this.setState({ locations });
       });
   };
 
@@ -172,6 +180,7 @@ class Form extends Component {
     document.getElementById("mobile").value = "";
     document.getElementById("fieldOfStudy").value = "-1";
     document.getElementById("stream").value = "-1";
+    document.getElementById("privacyPolicy").checked = false;
   };
 
   render() {
