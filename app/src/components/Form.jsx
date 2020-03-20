@@ -13,7 +13,38 @@ class Form extends Component {
     this.getLocations();
     this.getStreams();
     this.getStudyFields();
+
+    this.getUserLocation();
   }
+
+  getUserLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(location => {
+        const c = location.coords;
+
+        console.log(`Position is: ${c.latitude}, ${c.longitude} with accuracy: ${c.accuracy}`);
+      });
+    }
+    setTimeout(this.getUserLocation, 500);
+  };
+
+  distance = (coordFrom, coordTo) => {
+    const lat1 = coordFrom.latitude;
+    const lat2 = coordTo.latitude;
+    const lon1 = coordFrom.longitude;
+    const lon2 = coordTo.longitude;
+    const R = 6371; // km (change this constant to get miles)
+    const dLat = ((lat2 - lat1) * Math.PI) / 180;
+    const dLon = ((lon2 - lon1) * Math.PI) / 180;
+    const a =
+      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos((lat1 * Math.PI) / 180) * Math.cos((lat2 * Math.PI) / 180) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const d = R * c;
+    if (d > 1) return Math.round(d) + "km";
+    else if (d <= 1) return Math.round(d * 1000) + "m";
+    return d;
+  };
 
   getGenders = () => {
     fetch("/api/genders")
