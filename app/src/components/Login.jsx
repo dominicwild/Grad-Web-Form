@@ -31,11 +31,13 @@ class Login extends Component {
 
               <div>
                 <label htmlFor="password">Password</label>
-                <input type="text" id="password" name="password" />
+                <input type="password" id="password" name="password" />
               </div>
 
               <div className="login-btn-container">
-                <button className="btn" onClick={this.login}>Log in</button>
+                <button className="btn" onClick={this.login}>
+                  Log in
+                </button>
               </div>
 
               <div className="footer">
