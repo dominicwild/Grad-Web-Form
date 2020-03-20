@@ -37,6 +37,14 @@
   border: solid #bdbdbd 0.1em;
   padding: 0.1em;
   padding-left: 0.5em;
+  -webkit-transition: border 0.2s ease-in-out;
+  transition: border 0.2s ease-in-out;
+  outline: none;
+}
+
+.form input:focus,
+.form select:focus {
+  border: solid #363535 0.1em;
 }
 
 .form label {
@@ -54,6 +62,36 @@
 
 .form select option {
   padding: 1em;
+}
+
+.form .privacy-policy {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 1em;
+}
+
+.form .privacy-policy label {
+  display: inline-block;
+  padding-left: 15px;
+  text-indent: -15px;
+}
+
+.form .privacy-policy input {
+  width: 13px;
+  height: 13px;
+  padding: 0;
+  margin: 0;
+  vertical-align: bottom;
+  position: relative;
+  top: -4px;
+}
+
+.form .privacy-policy .privacy-text {
+  margin-left: 1em;
 }
 
 .form .form-fields {

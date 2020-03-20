@@ -39,6 +39,7 @@ router.post("/user", (req, res) => {
   data = req.body;
   //data.firstName && data.lastName && data.GenderId && data.email && data.StudyFieldId && data.StreamId && data.credential && data.LocationId
   if (data.firstName && data.lastName && data.email) {
+    console.log(data);
     return res.status(200).send({
       msg: "Data successfully uploaded.",
       success:true,

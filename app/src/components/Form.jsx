@@ -79,14 +79,21 @@ class Form extends Component {
           {(() => {
             if (list) {
               return list.map(list => {
-                return <option value={list.id}>{list.name}</option>;
+                return (
+                  <option value={list.id} key={list.id + list.name}>
+                    {list.name}
+                  </option>
+                );
               });
             } else {
-              return <option>Loading...</option>;
+              return <option key="loading">Loading...</option>;
             }
           })()}
 
-          <option selected value="-1"> {defaultOptionText} </option>
+          <option defaultValue key={"default" + labelText} value="-1">
+            {" "}
+            {defaultOptionText}{" "}
+          </option>
         </select>
       </div>
     );
@@ -114,13 +121,13 @@ class Form extends Component {
             return res.json();
           } else {
             console.error("Failed to submit form. " + res.statusText);
-            toastr.error("", "Failed to submit form.")
+            toastr.error("", "Failed to submit form.");
           }
         })
         .then(data => {
           if (data.success) {
             toastr.success("", "Successfully submitted form with email: " + email);
-            this.clear()
+            this.clear();
           }
         });
     }
@@ -174,6 +181,17 @@ class Form extends Component {
             {this.renderSelect("fieldOfStudy", "Field of Study", "Select the field you study", studyFields)}
 
             {this.renderSelect("stream", "Preferred Role", "Select the type of role you're interested in", streams)}
+          </div>
+
+          <div className="privacy-policy">
+            <label htmlFor="privacyPolicy">
+              <span>
+                <input type="checkbox" name="privacyPolicy" id="privacyPolicy" required />
+              </span>
+              <span className="privacy-text">
+                I agree to DXC's <a href="#privacyPolicy">Privacy Policy</a>
+              </span>
+            </label>
           </div>
 
           <div className="btn-container">
