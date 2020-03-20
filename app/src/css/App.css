@@ -67,4 +67,8 @@ h1 {
   background-color: black;
   color: yellow;
 }
+
+.redux-toastr * {
+  font-family: arial;
+}
 /*# sourceMappingURL=App.css.map */

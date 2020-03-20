@@ -41,11 +41,13 @@ router.post("/user", (req, res) => {
   if (data.firstName && data.lastName && data.email) {
     return res.status(200).send({
       msg: "Data successfully uploaded.",
+      success:true,
       data
     });
   } else {
     return res.status(400).send({
-      msg: "Data is missing and was not uploaded."
+      msg: "Data is missing and was not uploaded.",
+      success:false
     });
   }
 });

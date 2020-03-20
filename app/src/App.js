@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import "./css/libs/reboot.css";
 import "./css/App.css";
+import 'react-redux-toastr/lib/css/react-redux-toastr.min.css'
 import { Router } from "@reach/router";
+import { Provider } from "react-redux";
+import ReduxToastr from "react-redux-toastr";
+
 import Login from "./components/Login";
 import Form from "./components/Form";
-
 
 class App extends Component {
   constructor(props) {
@@ -46,19 +49,34 @@ class App extends Component {
   };
 
   render() {
-
-    fetch("/api/locations").then(res => {
-      return res.json();
-    }).then(data => {
-      console.log(data);
-    })
-    
+    fetch("/api/locations")
+      .then(res => {
+        return res.json();
+      })
+      .then(data => {
+        console.log(data);
+      });
 
     return (
-      <Router>
-        <Login path="/" login={this.login} />
-        <Form path="/form" />
-      </Router>
+      <Provider store={this.props.store}>
+        <div>
+          <Router>
+            <Login path="/" login={this.login} />
+            <Form path="/form" />
+          </Router>
+          <ReduxToastr
+            timeOut={4000}
+            newestOnTop={false}
+            preventDuplicates
+            position="bottom-center"
+            getState={state => state.toastr} // This is the default
+            transitionIn="fadeIn"
+            transitionOut="fadeOut"
+            progressBar
+            closeOnToastrClick
+          />
+        </div>
+      </Provider>
     );
   }
 }
