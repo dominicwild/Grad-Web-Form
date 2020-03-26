@@ -27,8 +27,8 @@ class Form extends Component {
 
         if (locations) {
           locations.forEach(location => {
-              const d = this.distance(c, location)
-              console.log(`Distance to ${location.name} is ${d}`);
+            const d = this.distance(c, location);
+            console.log(`Distance to ${location.name} is ${d}`);
           });
         }
       });
@@ -105,7 +105,7 @@ class Form extends Component {
           console.error("Failed to get genders ", res.statusText);
         }
       })
-      .then(({locations}) => {
+      .then(({ locations }) => {
         this.setState({ locations });
       });
   };
@@ -172,7 +172,8 @@ class Form extends Component {
     }
   };
 
-  clear = () => {
+  clear = e => {
+    e.preventDefault();
     document.getElementById("firstName").value = "";
     document.getElementById("lastName").value = "";
     document.getElementById("gender").value = "-1";
@@ -237,6 +238,10 @@ class Form extends Component {
           <div className="btn-container">
             <button className="btn" onClick={this.submit}>
               Submit
+            </button>
+
+            <button className="btn clear-btn" onClick={this.clear}>
+              Clear
             </button>
           </div>
         </form>

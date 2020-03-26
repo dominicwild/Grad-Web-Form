@@ -6,14 +6,14 @@ router.post("/login", (req, res) => {
   console.log(req.body)
   console.log(`Got credentials user: ${credentials.username} pass: ${credentials.password}`);
   if (credentials.username && credentials.password) {
-    return res.status(200).send({ credential });
+    return res.status(200).json({ credential });
   } else {
-    return res.status(400).send({ errMsg: "Credentials invalid or not supplied." });
+    return res.status(400).json({ errMsg: "Credentials invalid or not supplied." });
   }
 });
 
 router.get("/genders", (req, res) => {
-  return res.status(200).send({
+  return res.status(200).json({
     genders: [
       {
         id: 1,
@@ -40,13 +40,13 @@ router.post("/user", (req, res) => {
   //data.firstName && data.lastName && data.GenderId && data.email && data.StudyFieldId && data.StreamId && data.credential && data.LocationId
   if (data.firstName && data.lastName && data.email) {
     console.log(data);
-    return res.status(200).send({
+    return res.status(200).json({
       msg: "Data successfully uploaded.",
       success:true,
       data
     });
   } else {
-    return res.status(400).send({
+    return res.status(400).json({
       msg: "Data is missing and was not uploaded.",
       success:false
     });
@@ -54,7 +54,7 @@ router.post("/user", (req, res) => {
 });
 
 router.get("/studyFields", (req, res) => {
-  return res.status(200).send({
+  return res.status(200).json({
     studyFields: [
       {
         id: 1,
@@ -77,7 +77,7 @@ router.get("/studyFields", (req, res) => {
 });
 
 router.get("/locations", (req, res) => {
-  return res.status("200").send({
+  return res.status("200").json({
     locations: [
       {
         id: 1,
@@ -120,7 +120,7 @@ router.get("/locations", (req, res) => {
 });
 
 router.get("/streams", (req, res) => {
-  return res.status("200").send({
+  return res.status("200").json({
     streams: [
       {
         id: 1,

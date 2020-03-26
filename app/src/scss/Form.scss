@@ -94,11 +94,21 @@
 
   .btn-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
+    
 
     .btn {
       padding: 0.5em 1em;
+      width: 6em//110px;
+    }
+
+    .clear-btn {
+      background-color: #BDBDBD;
+      &:hover {
+       color:white; 
+       background-color: black;
+      }
     }
   }
 }

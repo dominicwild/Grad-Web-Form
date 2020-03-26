@@ -49,13 +49,6 @@ class App extends Component {
   };
 
   render() {
-    fetch("/api/locations")
-      .then(res => {
-        return res.json();
-      })
-      .then(data => {
-        console.log(data);
-      });
 
     return (
       <Provider store={this.props.store}>
