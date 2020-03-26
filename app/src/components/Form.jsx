@@ -188,7 +188,9 @@ class Form extends Component {
   };
 
   clear = e => {
-    e.preventDefault();
+    if (e) {
+      e.preventDefault();
+    }
     document.getElementById("firstName").value = "";
     document.getElementById("lastName").value = "";
     document.getElementById("gender").value = "-1";
