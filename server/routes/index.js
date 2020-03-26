@@ -76,6 +76,21 @@ router.get("/studyFields", (req, res) => {
   });
 });
 
+router.get("/applicantType", (req, res) => {
+  return res.status(200).json({
+    applicantTypes: [
+      {
+        id: 1,
+        name: "Graduate"
+      },
+      {
+        id: 2,
+        name: "Apprentice"
+      }
+    ]
+  });
+});
+
 router.get("/locations", (req, res) => {
   return res.status("200").json({
     locations: [

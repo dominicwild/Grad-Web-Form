@@ -13,6 +13,7 @@ class Form extends Component {
     this.getLocations();
     this.getStreams();
     this.getStudyFields();
+    this.getApplicationTypes();
 
     this.getUserLocation();
   }
@@ -52,6 +53,20 @@ class Form extends Component {
     if (d > 1) return Math.round(d) + "km";
     else if (d <= 1) return Math.round(d * 1000) + "m";
     return d;
+  };
+
+  getApplicationTypes = () => {
+    fetch("/api/applicantType")
+      .then(res => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          console.error("Failed to get applicant types ", res.statusText);
+        }
+      })
+      .then(({ applicantTypes }) => {
+        this.setState({ applicantTypes });
+      });
   };
 
   getGenders = () => {
@@ -185,7 +200,7 @@ class Form extends Component {
   };
 
   render() {
-    const { genders, streams, studyFields } = this.state;
+    const { genders, streams, studyFields, applicantTypes } = this.state;
 
     return (
       <div className="form">
@@ -208,6 +223,8 @@ class Form extends Component {
             </div>
 
             {this.renderSelect("gender", "Gender", "Select your gender", genders)}
+
+            {this.renderSelect("applicantType", "Scheme", "Select the scheme you're interested in", applicantTypes)}
 
             <div className="field required">
               <label htmlFor="email">Email:</label>
