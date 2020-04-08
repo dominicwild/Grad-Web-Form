@@ -1,0 +1,23 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-gradwebapp-dev-135910-authRole",
+            "UnauthRoleArn": "arn:aws:iam::156696234922:role/amplify-gradwebapp-dev-135910-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::156696234922:role/amplify-gradwebapp-dev-135910-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "amplify-gradwebapp-dev-135910-deployment",
+            "UnauthRoleName": "amplify-gradwebapp-dev-135910-unauthRole",
+            "StackName": "amplify-gradwebapp-dev-135910",
+            "StackId": "arn:aws:cloudformation:eu-west-1:156696234922:stack/amplify-gradwebapp-dev-135910/bef57a50-7998-11ea-aa51-0ae0d664c880",
+            "AmplifyAppId": "d162zlu7zws9f6"
+        },
+        "categories": {
+            "hosting": {
+                "amplifyhosting": {
+                    "appId": "d162zlu7zws9f6",
+                    "type": "manual"
+                }
+            }
+        }
+    }
+}

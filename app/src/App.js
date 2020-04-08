@@ -1,32 +1,50 @@
 import React, { Component } from "react";
 import "./css/libs/reboot.css";
 import "./css/App.css";
-import 'react-redux-toastr/lib/css/react-redux-toastr.min.css'
+import "react-redux-toastr/lib/css/react-redux-toastr.min.css";
 import { Router } from "@reach/router";
 import { Provider } from "react-redux";
 import ReduxToastr from "react-redux-toastr";
+import Amplify from "aws-amplify";
+import { cognito } from "./config";
 
 import Login from "./components/Login";
 import Form from "./components/Form";
+
+Amplify.configure({
+  Auth: {
+    // REQUIRED - Amazon Cognito Region
+    region: cognito.region,
+
+    // OPTIONAL - Amazon Cognito User Pool ID
+    userPoolId: cognito.poolId,
+
+    // OPTIONAL - Amazon Cognito Web Client ID (26-char alphanumeric string)
+    userPoolWebClientId: "a1b2c3d4e5f6g7h8i9j0k1l2m3",
+
+    // OPTIONAL - Enforce user authentication prior to accessing AWS resources or not
+    mandatorySignIn: false,
+  },
+});
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      credential: null
+      credential: null,
     };
   }
 
-  login = async credentials => {
+  login = async (credentials) => {
     return await fetch("/api/login", {
       method: "post",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(credentials)
+      body: JSON.stringify(credentials),
     })
-      .then(res => {
+      .then((res) => {
         if (res.ok) {
           return res.json();
         } else {
@@ -34,7 +52,7 @@ class App extends Component {
           return false;
         }
       })
-      .then(data => {
+      .then((data) => {
         if (data) {
           this.setState({ credential: data.credential });
           return true;
@@ -42,14 +60,13 @@ class App extends Component {
           return false;
         }
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(err);
         return false;
       });
   };
 
   render() {
-
     return (
       <Provider store={this.props.store}>
         <div>
@@ -62,7 +79,7 @@ class App extends Component {
             newestOnTop={false}
             preventDuplicates
             position="bottom-center"
-            getState={state => state.toastr} // This is the default
+            getState={(state) => state.toastr} // This is the default
             transitionIn="fadeIn"
             transitionOut="fadeOut"
             progressBar
