@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import List from "./List";
 import "../css/Form.css";
 import { toastr } from "react-redux-toastr";
+import api from "../util/API"
 
 class Form extends Component {
   constructor(props) {
@@ -56,7 +57,7 @@ class Form extends Component {
   };
 
   getApplicationTypes = () => {
-    fetch("/api/applicantType")
+    api("/api/applicantType")
       .then(res => {
         if (res.ok) {
           return res.json();
@@ -70,7 +71,7 @@ class Form extends Component {
   };
 
   getGenders = () => {
-    fetch("/api/genders")
+    api("/api/genders")
       .then(res => {
         if (res.ok) {
           return res.json();
@@ -84,7 +85,7 @@ class Form extends Component {
   };
 
   getStudyFields = () => {
-    fetch("/api/studyFields")
+    api("/api/studyFields")
       .then(res => {
         if (res.ok) {
           return res.json();
@@ -98,7 +99,7 @@ class Form extends Component {
   };
 
   getStreams = () => {
-    fetch("/api/streams")
+    api("/api/streams")
       .then(res => {
         if (res.ok) {
           return res.json();
@@ -112,7 +113,7 @@ class Form extends Component {
   };
 
   getLocations = () => {
-    fetch("/api/locations")
+    api("/api/locations")
       .then(res => {
         if (res.ok) {
           return res.json();
@@ -163,7 +164,7 @@ class Form extends Component {
       const StudyFieldId = document.getElementById("fieldOfStudy").value;
       const StreamId = document.getElementById("stream").value;
 
-      fetch("/api/user", {
+      api("/api/user", {
         method: "post",
         headers: {
           "Content-Type": "application/json"

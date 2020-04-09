@@ -5,7 +5,7 @@ import "react-redux-toastr/lib/css/react-redux-toastr.min.css";
 import { Router } from "@reach/router";
 import { Provider } from "react-redux";
 import ReduxToastr from "react-redux-toastr";
-import Amplify from "aws-amplify";
+import Amplify, { Auth } from "aws-amplify";
 import { cognito } from "./config";
 
 import Login from "./components/Login";
@@ -20,7 +20,7 @@ Amplify.configure({
     userPoolId: cognito.poolId,
 
     // OPTIONAL - Amazon Cognito Web Client ID (26-char alphanumeric string)
-    userPoolWebClientId: "a1b2c3d4e5f6g7h8i9j0k1l2m3",
+    userPoolWebClientId: cognito.clientId,
 
     // OPTIONAL - Enforce user authentication prior to accessing AWS resources or not
     mandatorySignIn: false,
@@ -36,34 +36,29 @@ class App extends Component {
     };
   }
 
-  login = async (credentials) => {
-    return await fetch("/api/login", {
-      method: "post",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(credentials),
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          console.error("Failed to login.");
-          return false;
-        }
-      })
-      .then((data) => {
-        if (data) {
-          this.setState({ credential: data.credential });
-          return true;
-        } else {
-          return false;
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-        return false;
-      });
+  login = async (username, password) => {
+
+    const user = await Auth.signIn(username, password)
+      .catch((err) => console.log(err));
+
+    // const user = await Auth.currentAuthenticatedUser().catch(err => {
+    //   console.error(err)
+    // })
+
+    console.log("User has been logged in: ")
+    console.log(user)
+    //await Auth.completeNewPassword(user, password).then(data => console.log(data)).catch(err => console.error(err)); // Used to confirm new account, when created through admin cognito console.
+
+    // Auth.currentAuthenticatedUser()
+    //   .then(user => {
+    //     return Auth.changePassword(user, password, password);
+    //   })
+    //   .then(data => {
+    //     console.log("Password changed")
+    //     console.log(data)})
+    //   .catch(err => console.log(err));
+
+    return user
   };
 
   render() {

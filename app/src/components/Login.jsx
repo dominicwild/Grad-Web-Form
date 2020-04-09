@@ -10,7 +10,7 @@ class Login extends Component {
     const password = document.getElementById("password").value;
 
     console.log({ username, password });
-    const success = await this.props.login({ username, password });
+    const success = await this.props.login(username, password);
     console.log(`Success: ${success}`);
     if (success) {
       navigate("/form");
