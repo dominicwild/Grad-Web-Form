@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import List from "./List";
 import "../css/Form.css";
 import { toastr } from "react-redux-toastr";
-import api from "../util/API"
+import api from "../util/API";
 
 class Form extends Component {
   constructor(props) {
@@ -16,19 +16,19 @@ class Form extends Component {
     this.getStudyFields();
     this.getApplicationTypes();
 
-    this.getUserLocation();
+    //this.getUserLocation();
   }
 
   getUserLocation = () => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(location => {
+      navigator.geolocation.getCurrentPosition((location) => {
         const c = location.coords;
         const { locations } = this.state;
 
         console.log(`Position is: ${c.latitude}, ${c.longitude} with accuracy: ${c.accuracy}`);
 
         if (locations) {
-          locations.forEach(location => {
+          locations.forEach((location) => {
             const d = this.distance(c, location);
             console.log(`Distance to ${location.name} is ${d}`);
           });
@@ -58,70 +58,71 @@ class Form extends Component {
 
   getApplicationTypes = () => {
     api("/api/applicantType")
-      .then(res => {
+      .then((res) => {
         if (res.ok) {
           return res.json();
         } else {
           console.error("Failed to get applicant types ", res.statusText);
         }
       })
-      .then(({ applicantTypes }) => {
+      .then((applicantTypes) => {
         this.setState({ applicantTypes });
       });
   };
 
   getGenders = () => {
     api("/api/genders")
-      .then(res => {
+      .then((res) => {
         if (res.ok) {
           return res.json();
         } else {
           console.error("Failed to get genders ", res.statusText);
         }
       })
-      .then(({ genders }) => {
+      .then((genders) => {
+        console.log(genders);
         this.setState({ genders });
       });
   };
 
   getStudyFields = () => {
     api("/api/studyFields")
-      .then(res => {
+      .then((res) => {
         if (res.ok) {
           return res.json();
         } else {
           console.error("Failed to get genders ", res.statusText);
         }
       })
-      .then(({ studyFields }) => {
+      .then((studyFields) => {
         this.setState({ studyFields });
       });
   };
 
   getStreams = () => {
     api("/api/streams")
-      .then(res => {
+      .then((res) => {
         if (res.ok) {
           return res.json();
         } else {
           console.error("Failed to get genders ", res.statusText);
         }
       })
-      .then(({ streams }) => {
+      .then((streams) => {
         this.setState({ streams });
       });
   };
 
   getLocations = () => {
     api("/api/locations")
-      .then(res => {
+      .then((res) => {
         if (res.ok) {
           return res.json();
         } else {
           console.error("Failed to get genders ", res.statusText);
         }
       })
-      .then(({ locations }) => {
+      .then((locations) => {
         this.setState({ locations });
       });
   };
@@ -133,7 +134,7 @@ class Form extends Component {
         <select type="text" id={id} name={id} disabled={list === undefined} defaultValue={3}>
           {(() => {
             if (list) {
-              return list.map(list => {
+              return list.map((list) => {
                 return (
                   <option value={list.id} key={list.id + list.name}>
                     {list.name}
@@ -154,7 +155,7 @@ class Form extends Component {
     );
   };
 
-  submit = event => {
+  submit = (event) => {
     if (document.getElementById("form").checkValidity()) {
       const firstName = document.getElementById("firstName").value;
       const lastName = document.getElementById("lastName").value;
@@ -167,11 +168,11 @@ class Form extends Component {
       api("/api/user", {
         method: "post",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify({ firstName, lastName, GenderId, email, mobile, StudyFieldId, StreamId })
+        body: JSON.stringify({ firstName, lastName, GenderId, email, mobile, StudyFieldId, StreamId }),
       })
-        .then(res => {
+        .then((res) => {
           if (res.ok) {
             return res.json();
           } else {
@@ -179,7 +180,7 @@ class Form extends Component {
             toastr.error("", "Failed to submit form.");
           }
         })
-        .then(data => {
+        .then((data) => {
           if (data.success) {
             toastr.success("", "Successfully submitted form with email: " + email);
             this.clear();
@@ -188,7 +189,7 @@ class Form extends Component {
     }
   };
 
-  clear = e => {
+  clear = (e) => {
     if (e) {
       e.preventDefault();
     }
@@ -207,7 +208,7 @@ class Form extends Component {
 
     return (
       <div className="form">
-        <form className="form-container" id="form" onSubmit={e => e.preventDefault()}>
+        <form className="form-container" id="form" onSubmit={(e) => e.preventDefault()}>
           <div className="form-header">
             <h1>DXC Beacon</h1>
             <h2>Please fill out the fields below:</h2>

@@ -47,6 +47,11 @@ class App extends Component {
 
     console.log("User has been logged in: ")
     console.log(user)
+
+    // Auth.forgotPasswordSubmit(username, "915317", "Password1234!")
+    // .then(data => console.log(data))
+    // .catch(err => console.log(err));
+    
     //await Auth.completeNewPassword(user, password).then(data => console.log(data)).catch(err => console.error(err)); // Used to confirm new account, when created through admin cognito console.
 
     // Auth.currentAuthenticatedUser()
