@@ -15,6 +15,7 @@ class Form extends Component {
     this.getStreams();
     this.getStudyFields();
     this.getApplicationTypes();
+    this.getNationalities();
 
     //this.getUserLocation();
   }
@@ -67,6 +68,20 @@ class Form extends Component {
       })
       .then((applicantTypes) => {
         this.setState({ applicantTypes });
+      });
+  };
+
+  getNationalities = () => {
+    api("/api/nationalities")
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          console.error("Failed to get nationalities ", res.statusText);
+        }
+      })
+      .then((nationalities) => {
+        this.setState({ nationalities });
       });
   };
 
@@ -127,11 +142,11 @@ class Form extends Component {
       });
   };
 
-  renderSelect = (id, labelText, defaultOptionText, list) => {
+  renderSelect = (id, labelText, defaultOptionText, list, onChange) => {
     return (
       <div className="field">
         <label htmlFor={id}>{labelText}:</label>
-        <select type="text" id={id} name={id} disabled={list === undefined} defaultValue={3}>
+        <select type="text" id={id} name={id} disabled={list === undefined} defaultValue={3} onChange={onChange}>
           {(() => {
             if (list) {
               return list.map((list) => {
@@ -203,8 +218,28 @@ class Form extends Component {
     document.getElementById("privacyPolicy").checked = false;
   };
 
+  getSelectedListboxItemText = (id) => {
+    const listbox = document.getElementById(id)
+    if(listbox){
+      return listbox.options[listbox.selectedIndex].text
+    } else {
+      return null
+    }
+  }
+
+  applicantTypeOnChange = (e) => {
+    const listbox = e.target
+    const selectedText = listbox.options[listbox.selectedIndex].text
+    console.log(selectedText)
+    if(selectedText === "Apprentice"){
+      document.getElementById("stream").closest(".field").style.display = "none"
+    } else {
+      document.getElementById("stream").closest(".field").style.display = ""
+    }
+  }
+
   render() {
-    const { genders, streams, studyFields, applicantTypes } = this.state;
+    const { genders, streams, studyFields, applicantTypes, nationalities } = this.state;
 
     return (
       <div className="form">
@@ -228,7 +263,9 @@ class Form extends Component {
 
             {this.renderSelect("gender", "Gender", "Select your gender", genders)}
 
-            {this.renderSelect("applicantType", "Scheme", "Select the scheme you're interested in", applicantTypes)}
+            {this.renderSelect("nationality", "Nationality", "Select your nationality", nationalities)}
+
+            {this.renderSelect("applicantType", "Scheme", "Select the scheme you're interested in", applicantTypes, this.applicantTypeOnChange)}
 
             <div className="field required">
               <label htmlFor="email">Email:</label>
