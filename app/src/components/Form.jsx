@@ -282,6 +282,17 @@ class Form extends Component {
             {this.renderSelect("stream", "Preferred Role", "Select the type of role you're interested in", streams)}
           </div>
 
+          <div className="livedInUK5Years checkbox">
+            <label htmlFor="livedInUK5Years">
+              <span>
+                <input type="checkbox" name="livedInUK5Years" id="livedInUK5Years" required />
+              </span>
+              <span className="livedInUK5Years-text">
+                I have lived in the UK for more than 5 years
+              </span>
+            </label>
+          </div>
+
           <div className="privacy-policy">
             <label htmlFor="privacyPolicy">
               <span>
