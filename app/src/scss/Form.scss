@@ -57,7 +57,7 @@
     }
   }
 
-  .privacy-policy {
+  .privacy-policy, .livedInUK5Years {
     display: flex;
     justify-content: center;
     margin-bottom: 1em;
@@ -78,7 +78,7 @@
       top: -6px;
     }
 
-    .privacy-text {
+    .privacy-text, .livedInUK5Years-text {
       margin-left: 1em;
     }
   }
