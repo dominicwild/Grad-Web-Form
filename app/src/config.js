@@ -6,6 +6,6 @@ module.exports = {
     },
     api: {
         invokeUrl: "https://iq7a6rej2j.execute-api.eu-west-1.amazonaws.com/Stage",
-        type: "local" //Options [local, aws]
+        type: "aws" //Options [local, aws]
     }
 }

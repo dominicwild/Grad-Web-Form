@@ -15,13 +15,13 @@ module.exports = async (url, args) => {
     try {
       session = await Auth.currentSession();
       console.log(session);
-      // args["headers"]["Authorization"] = session.idToken.jwtToken
-      args = {
-        method: "get",
-        headers: {
-          Authorization: session.idToken.jwtToken,
-        },
-      };
+      args["headers"]["Authorization"] = session.idToken.jwtToken
+      // args = {
+      //   method: "get",
+      //   headers: {
+      //     Authorization: session.idToken.jwtToken,
+      //   },
+      // };
       console.log(args);
       console.log(invokeUrl + url);
     } catch (err) {

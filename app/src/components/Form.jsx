@@ -181,7 +181,7 @@ class Form extends Component {
       const StreamId = document.getElementById("stream").value;
 
       api("/api/user", {
-        method: "post",
+        method: "put",
         headers: {
           "Content-Type": "application/json",
         },
