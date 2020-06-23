@@ -293,7 +293,7 @@ class Form extends Component {
             </label>
           </div>
 
-          <div className="privacy-policy">
+          <div className="privacy-policy checkbox">
             <label htmlFor="privacyPolicy">
               <span>
                 <input type="checkbox" name="privacyPolicy" id="privacyPolicy" required />
