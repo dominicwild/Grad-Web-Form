@@ -58,7 +58,7 @@ class Form extends Component {
   };
 
   getApplicationTypes = () => {
-    api("/api/applicantType")
+    api("/api/schemes")
       .then((res) => {
         if (res.ok) {
           return res.json();
@@ -179,13 +179,16 @@ class Form extends Component {
       const mobile = document.getElementById("mobile").value;
       const StudyFieldId = document.getElementById("fieldOfStudy").value;
       const StreamId = document.getElementById("stream").value;
+      const NationalityId = document.getElementById("nationality").value;
+      const moreThan5YearsUk = document.getElementById("livedInUK5Years").value;
+      const SchemeId = document.getElementById("applicantType").value;
 
       api("/api/user", {
         method: "put",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ firstName, lastName, GenderId, email, mobile, StudyFieldId, StreamId }),
+        body: JSON.stringify({ firstName, lastName, GenderId, email, mobile, StudyFieldId, StreamId, NationalityId, moreThan5YearsUk, SchemeId }),
       })
         .then((res) => {
           if (res.ok) {
@@ -220,24 +223,24 @@ class Form extends Component {
   };
 
   getSelectedListboxItemText = (id) => {
-    const listbox = document.getElementById(id)
-    if(listbox){
-      return listbox.options[listbox.selectedIndex].text
+    const listbox = document.getElementById(id);
+    if (listbox) {
+      return listbox.options[listbox.selectedIndex].text;
     } else {
-      return null
+      return null;
     }
-  }
+  };
 
   applicantTypeOnChange = (e) => {
-    const listbox = e.target
-    const selectedText = listbox.options[listbox.selectedIndex].text
-    console.log(selectedText)
-    if(selectedText === "Apprentice"){
-      document.getElementById("stream").closest(".field").style.display = "none"
+    const listbox = e.target;
+    const selectedText = listbox.options[listbox.selectedIndex].text;
+    console.log(selectedText);
+    if (selectedText === "Apprentice") {
+      document.getElementById("stream").closest(".field").style.display = "none";
     } else {
-      document.getElementById("stream").closest(".field").style.display = ""
+      document.getElementById("stream").closest(".field").style.display = "";
     }
-  }
+  };
 
   render() {
     const { genders, streams, studyFields, applicantTypes, nationalities } = this.state;
@@ -288,9 +291,7 @@ class Form extends Component {
               <span>
                 <input type="checkbox" name="livedInUK5Years" id="livedInUK5Years" required />
               </span>
-              <span className="livedInUK5Years-text">
-                I have lived in the UK for more than 5 years
-              </span>
+              <span className="livedInUK5Years-text">I have lived in the UK for more than 5 years</span>
             </label>
           </div>
 
