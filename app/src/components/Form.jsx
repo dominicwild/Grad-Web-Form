@@ -196,7 +196,7 @@ class Form extends Component {
           }
         })
         .then((data) => {
-          if (data.success) {
+          if (data.id) {
             toastr.success("", "Successfully submitted form with email: " + email);
             this.clear();
           }
@@ -216,6 +216,7 @@ class Form extends Component {
     document.getElementById("fieldOfStudy").value = "-1";
     document.getElementById("stream").value = "-1";
     document.getElementById("privacyPolicy").checked = false;
+    document.getElementById("livedInUK5Years").checked = false;
   };
 
   getSelectedListboxItemText = (id) => {
