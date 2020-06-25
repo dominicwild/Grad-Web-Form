@@ -17,26 +17,28 @@ class Form extends Component {
     this.getApplicationTypes();
     this.getNationalities();
 
-    //this.getUserLocation();
+    this.getUserLocation();
   }
 
   getUserLocation = () => {
+    const seconds = 60*5;
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((location) => {
         const c = location.coords;
-        const { locations } = this.state;
+        this.setState({gpsLocation: c})
+        // const { locations } = this.state;
 
-        console.log(`Position is: ${c.latitude}, ${c.longitude} with accuracy: ${c.accuracy}`);
+        // console.log(`Position is: ${c.latitude}, ${c.longitude} with accuracy: ${c.accuracy}`);
 
-        if (locations) {
-          locations.forEach((location) => {
-            const d = this.distance(c, location);
-            console.log(`Distance to ${location.name} is ${d}`);
-          });
-        }
+        // if (locations) {
+        //   locations.forEach((location) => {
+        //     const d = this.distance(c, location);
+        //     console.log(`Distance to ${location.name} is ${d}`);
+        //   });
+        // }
       });
     }
-    setTimeout(this.getUserLocation, 500);
+    setTimeout(this.getUserLocation, 1000 * seconds);
   };
 
   distance = (coordFrom, coordTo) => {
@@ -180,15 +182,16 @@ class Form extends Component {
       const StudyFieldId = document.getElementById("fieldOfStudy").value;
       const StreamId = document.getElementById("stream").value;
       const NationalityId = document.getElementById("nationality").value;
-      const moreThan5YearsUk = document.getElementById("livedInUK5Years").value;
+      const moreThan5YearsUk = document.getElementById("livedInUK5Years").checked;
       const SchemeId = document.getElementById("applicantType").value;
+      const {latitude, longitude, accuracy} = this.state.gpsLocation
 
       api("/api/user", {
         method: "put",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ firstName, lastName, GenderId, email, mobile, StudyFieldId, StreamId, NationalityId, moreThan5YearsUk, SchemeId }),
+        body: JSON.stringify({ firstName, lastName, GenderId, email, mobile, StudyFieldId, StreamId, NationalityId, latitude, longitude, accuracy, moreThan5YearsUk, SchemeId }),
       })
         .then((res) => {
           if (res.ok) {
@@ -218,6 +221,8 @@ class Form extends Component {
     document.getElementById("mobile").value = "";
     document.getElementById("fieldOfStudy").value = "-1";
     document.getElementById("stream").value = "-1";
+    document.getElementById("applicantType").value = "-1";
+    document.getElementById("nationality").value = "-1";
     document.getElementById("privacyPolicy").checked = false;
     document.getElementById("livedInUK5Years").checked = false;
   };
