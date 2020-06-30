@@ -55,10 +55,31 @@ body {
 
 
   .login-btn-container {
-
     display:flex;
     justify-content: center;
     align-items: center;
-  
+  }
+
+  .loading-overlay {
+    position: absolute;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0.8;
+    background-color: black;
+
+    * {
+      background-color: black;
+    }
+
+    .loading-overlay-inner {
+      position: relative;
+
+      .loading-text {
+        text-align: center;
+        color: white;
+      }
+    }
   }
 }

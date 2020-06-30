@@ -37,21 +37,22 @@ class App extends Component {
   }
 
   login = async (username, password) => {
-
-    const user = await Auth.signIn(username, password)
-      .catch((err) => console.log(err));
+    const response = await Auth.signIn(username, password).catch((err) => {
+      console.log(err);
+      return err;
+    });
 
     // const user = await Auth.currentAuthenticatedUser().catch(err => {
     //   console.error(err)
     // })
 
-    console.log("User has been logged in: ")
-    console.log(user)
+    console.log("Response is: ");
+    console.log(response);
 
     // Auth.forgotPasswordSubmit(username, "915317", "Password1234!")
     // .then(data => console.log(data))
     // .catch(err => console.log(err));
-    
+
     //await Auth.completeNewPassword(user, password).then(data => console.log(data)).catch(err => console.error(err)); // Used to confirm new account, when created through admin cognito console.
 
     // Auth.currentAuthenticatedUser()
@@ -63,7 +64,7 @@ class App extends Component {
     //     console.log(data)})
     //   .catch(err => console.log(err));
 
-    return user
+    return response;
   };
 
   render() {
