@@ -5,6 +5,7 @@ import logo from "../img/DXC_Technology_logo.svg";
 import loading from "../img/loading.svg";
 import { navigate } from "@reach/router";
 import { toastr } from "react-redux-toastr";
+import LoginLoadingOverlay from "./LoginLoadingOverlay";
 
 class Login extends Component {
   loadingInterval;
@@ -13,7 +14,7 @@ class Login extends Component {
     super();
 
     this.state = {
-      loggingIn: true,
+      loggingIn: false,
     };
   }
 
@@ -64,6 +65,7 @@ class Login extends Component {
     console.log("loading");
     const { loggingIn } = this.state;
     const loginCard = document.getElementById("loginCard");
+    console.log("Before if");
     if (loggingIn && loginCard) {
       console.log("logging in");
       const height = loginCard.clientHeight + "px";
@@ -88,7 +90,8 @@ class Login extends Component {
     return (
       <div className="background">
         <div className="login">
-          {this.loading()}
+          <LoginLoadingOverlay loadingText="Logging in" maxDots={3} overlayElementId="loginCard" loading={this.state.loggingIn}/>
+          {/* {this.loading()} */}
           <div id="loginCard">
             <h1>DXC Beacon Login</h1>
             <div className="inputs">
