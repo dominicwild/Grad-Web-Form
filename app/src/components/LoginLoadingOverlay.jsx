@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import SVG from "react-inlinesvg";
 import loadingSvg from "../img/loading.svg";
+import "../css/LoginLoadingOverlay.css";
 
 class LoginLoadingOverlay extends Component {
   constructor() {
@@ -19,7 +20,7 @@ class LoginLoadingOverlay extends Component {
         dotString += "&nbsp;";
       }
       console.log(dotString);
-      loadingTextElement.innerHTML = "Logging in" + dotString;
+      loadingTextElement.innerHTML = loadingText + dotString;
     } else {
       console.log("No loading animation found.");
     }

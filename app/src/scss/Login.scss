@@ -17,19 +17,17 @@ body {
   flex-direction: column;
   height: 100vh;
 
-  div {
+  .login-card-content{
     background-color: white;
-    padding: 1em;
+  }
 
+  div {
+    padding: 1em;
     border-radius: 1rem;
   }
 
   .inputs {
     padding: 0.25em;
-
-    // div + div{
-    //   padding-top: 0.25em;
-    // }
   }
  
   .footer {
@@ -58,28 +56,5 @@ body {
     display:flex;
     justify-content: center;
     align-items: center;
-  }
-
-  .loading-overlay {
-    position: absolute;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    opacity: 0.8;
-    background-color: black;
-
-    * {
-      background-color: black;
-    }
-
-    .loading-overlay-inner {
-      position: relative;
-
-      .loading-text {
-        text-align: center;
-        color: white;
-      }
-    }
   }
 }

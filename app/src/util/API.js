@@ -2,7 +2,7 @@ const { api } = require("../config");
 const invokeUrl = api.invokeUrl;
 const { Auth } = require("aws-amplify");
 
-module.exports = async (url, args) => {
+export default async (url, args) => {
   if (api.type === "aws") {
     let session = null;
     if (!args) {

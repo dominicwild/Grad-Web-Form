@@ -1,0 +1,30 @@
+.loading-overlay {
+  position: absolute;
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  opacity: 0.8;
+  background-color: black;
+  z-index: 100;
+}
+
+.loading-overlay * {
+  background-color: black;
+}
+
+.loading-overlay .loading-overlay-inner {
+  position: relative;
+}
+
+.loading-overlay .loading-overlay-inner .loading-text {
+  text-align: center;
+  color: white;
+}
+/*# sourceMappingURL=LoginLoadingOverlay.css.map */

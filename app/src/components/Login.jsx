@@ -44,9 +44,8 @@ class Login extends Component {
     return (
       <div className="background">
         <div className="login">
-          <LoginLoadingOverlay loadingText="Logging in" maxDots={3} overlayElementId="loginCard" loading={this.state.loggingIn}/>
-          {/* {this.loading()} */}
-          <div id="loginCard">
+          <LoginLoadingOverlay loadingText="Logging in" maxDots={4} overlayElementId="loginCard" loading={this.state.loggingIn}/>
+          <div className="login-card-content" id="loginCard">
             <h1>DXC Beacon Login</h1>
             <div className="inputs">
               <div>

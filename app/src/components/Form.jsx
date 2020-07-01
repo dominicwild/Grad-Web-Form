@@ -3,12 +3,15 @@ import List from "./List";
 import "../css/Form.css";
 import { toastr } from "react-redux-toastr";
 import api from "../util/API";
+import LoginLoadingOverlay from "./LoginLoadingOverlay";
 
 class Form extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      sending: false
+    };
 
     this.getGenders();
     this.getLocations();
@@ -186,6 +189,7 @@ class Form extends Component {
       const SchemeId = document.getElementById("applicantType").value;
       const {latitude, longitude, accuracy} = this.state.gpsLocation
 
+      this.setState({sending:true})
       api("/api/user", {
         method: "put",
         headers: {
@@ -199,12 +203,14 @@ class Form extends Component {
           } else {
             console.error("Failed to submit form. " + res.statusText);
             toastr.error("", "Failed to submit form.");
+            this.setState({sending:false})
           }
         })
         .then((data) => {
           if (data.id) {
             toastr.success("", "Successfully submitted form with email: " + email);
             this.clear();
+            this.setState({sending:false})
           }
         });
     }
@@ -251,7 +257,8 @@ class Form extends Component {
     const { genders, streams, studyFields, applicantTypes, nationalities } = this.state;
 
     return (
-      <div className="form">
+      <div className="form" id="beaconForm">
+        <LoginLoadingOverlay loadingText="Sending" maxDots={4} overlayElementId="beaconForm" loading={this.state.sending}/>
         <form className="form-container" id="form" onSubmit={(e) => e.preventDefault()}>
           <div className="form-header">
             <h1>DXC Beacon</h1>
