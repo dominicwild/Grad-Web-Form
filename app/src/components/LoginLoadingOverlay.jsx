@@ -19,7 +19,7 @@ class LoginLoadingOverlay extends Component {
       for (let i = 0; i < maxDots - dots; i++) {
         dotString += "&nbsp;";
       }
-      console.log(dotString);
+      
       loadingTextElement.innerHTML = loadingText + dotString;
     } else {
       console.log("No loading animation found.");

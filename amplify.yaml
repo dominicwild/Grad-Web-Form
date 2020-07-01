@@ -1,0 +1,15 @@
+version: 1
+frontend:
+  # phases:
+  #   preBuild:
+  #     commands:
+  #       - cd react-app
+  #       - npm ci
+  #   build:
+  #     commands:
+  #       - npm run build
+  artifacts:
+    files:
+        - "**/*"
+    # discard-paths: yes
+    baseDirectory: .

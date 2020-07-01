@@ -10,7 +10,10 @@ class Form extends Component {
     super(props);
 
     this.state = {
-      sending: false
+      sending: false,
+      gpsLocation: {
+        
+      }
     };
 
     this.getGenders();
