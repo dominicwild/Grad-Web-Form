@@ -40,52 +40,6 @@ class Login extends Component {
     }
   };
 
-  loadingTextAnimation = async (dots) => {
-    const maxDots = 4;
-    const loadingText = document.getElementById("loadingText");
-    if (loadingText) {
-      let dotString = "";
-      for (let i=0; i < dots; i++) {
-        dotString += ".";
-      }
-      for (let i=0; i < (maxDots-dots); i++) {
-        dotString += "&nbsp;";
-      }
-      console.log(dotString);
-      loadingText.innerHTML = "Logging in" + dotString;
-    } else {
-      console.log("No loading animation found");
-    }
-    if (this.state.loggingIn) {
-      setTimeout(this.loadingTextAnimation, 500, (dots + 1) % maxDots);
-    }
-  };
-
-  loading = () => {
-    console.log("loading");
-    const { loggingIn } = this.state;
-    const loginCard = document.getElementById("loginCard");
-    console.log("Before if");
-    if (loggingIn && loginCard) {
-      console.log("logging in");
-      const height = loginCard.clientHeight + "px";
-      const width = loginCard.clientWidth + "px";
-      this.loadingInterval = setTimeout(this.loadingTextAnimation, 500, 0);
-      return (
-        <div className="loading-overlay" style={{ height, width }}>
-          <div className="loading-overlay-inner">
-            <div className="loading-animation">
-              <SVG src={loading} />
-            </div>
-            <h1 className="loading-text" id="loadingText">
-              Logging in...
-            </h1>
-          </div>
-        </div>
-      );
-    }
-  };
-
   render() {
     return (
       <div className="background">
