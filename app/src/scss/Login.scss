@@ -17,7 +17,7 @@ body {
   flex-direction: column;
   height: 100vh;
 
-  .login-card-content{
+  .login-card-content {
     background-color: white;
   }
 
@@ -28,10 +28,16 @@ body {
 
   .inputs {
     padding: 0.25em;
+
+    > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
- 
+
   .footer {
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     padding: 5px;
@@ -42,18 +48,17 @@ body {
     }
   }
 
-
   h1 {
     text-align: center;
   }
-  
+
   label {
     width: 6em;
+    margin-bottom: 0px;
   }
 
-
   .login-btn-container {
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
   }

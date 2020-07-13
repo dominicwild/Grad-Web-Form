@@ -4,9 +4,7 @@ import loadingSvg from "../img/loading.svg";
 import "../css/LoginLoadingOverlay.css";
 
 class LoginLoadingOverlay extends Component {
-  constructor() {
-    super();
-  }
+  
 
   loadingTextAnimation = async (dots) => {
     const { maxDots, loadingText } = this.props;

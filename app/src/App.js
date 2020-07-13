@@ -32,7 +32,7 @@ class App extends Component {
     super(props);
 
     this.state = {
-      credential: null,
+      user: null,
     };
   }
 
@@ -42,32 +42,28 @@ class App extends Component {
       return err;
     });
 
-    // const user = await Auth.currentAuthenticatedUser().catch(err => {
-    //   console.error(err)
-    // })
-
     console.log("Response is: ");
     console.log(response);
 
-    // Auth.forgotPasswordSubmit(username, "915317", "Password1234!")
-    // .then(data => console.log(data))
-    // .catch(err => console.log(err));
-
-    //await Auth.completeNewPassword(user, password).then(data => console.log(data)).catch(err => console.error(err)); // Used to confirm new account, when created through admin cognito console.
-
-    // Auth.currentAuthenticatedUser()
-    //   .then(user => {
-    //     return Auth.changePassword(user, password, password);
-    //   })
-    //   .then(data => {
-    //     console.log("Password changed")
-    //     console.log(data)})
-    //   .catch(err => console.log(err));
+    // console.log("CompleteNewPassword:");
+    // await Auth.completeNewPassword(response, password)
+    //   .then((data) => console.log(data))
+    //   .catch((err) => console.error(err)); // Used to confirm new account, when created through admin cognito console.
 
     return response;
   };
 
   render() {
+    Auth.currentSession().then((data) => {
+      console.log(data);
+    });
+    Auth.currentAuthenticatedUser()
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
     return (
       <Provider store={this.props.store}>
         <div>
