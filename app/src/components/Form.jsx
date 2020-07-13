@@ -325,7 +325,7 @@ class Form extends Component {
             <button className="btn" onClick={this.submit}>
               Submit
             </button>
-
+        
             <button className="btn clear-btn" onClick={this.clear}>
               Clear
             </button>

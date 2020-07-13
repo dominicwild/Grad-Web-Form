@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,YAAY,CAAC;EACX,gBAAgB,EAAE,oBAAoB;EACtC,gBAAgB,EAAE,yBAAyB;EAC3C,eAAe,EAAE,KAAK;EACtB,qBAAqB,EAAE,QAAQ;CAahC;;AAjBD,AAME,YANU,CAMV,eAAe,CAAC;EACd,gBAAgB,EAAE,KAAK;EACvB,OAAO,EAAE,GAAG;EACZ,aAAa,EAAE,GAAG;EAClB,SAAS,EAAE,KAAK;CACjB;;AAXH,AAaE,YAbU,CAaV,cAAc,CAAA;EACV,UAAU,EAAE,MAAM;EAClB,KAAK,EAAE,IAAI;CACd",
+    "sources": [
+        "../scss/Unsubscribe.scss"
+    ],
+    "names": [],
+    "file": "Unsubscribe.css"
+}

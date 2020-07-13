@@ -10,6 +10,7 @@ import { cognito } from "./config";
 
 import Login from "./components/Login";
 import Form from "./components/Form";
+import Unsubscribe from "./components/Unsubscribe";
 
 Amplify.configure({
   Auth: {
@@ -70,6 +71,7 @@ class App extends Component {
           <Router>
             <Login path="/" login={this.login} />
             <Form path="/form" />
+            <Unsubscribe path="/unsubscribe/:id" />
           </Router>
           <ReduxToastr
             timeOut={4000}
