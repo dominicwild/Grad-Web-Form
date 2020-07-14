@@ -8,12 +8,19 @@
 .unsubscribe .form-container {
   background-color: white;
   padding: 2em;
-  border-radius: 1em;
+  border-radius: 1rem;
   max-width: 400px;
 }
 
 .unsubscribe .btn-container {
   text-align: center;
+}
+
+.unsubscribe .btn-container .btn {
   width: auto;
+}
+
+.unsubscribe .form > div {
+  border-radius: 1rem;
 }
 /*# sourceMappingURL=Unsubscribe.css.map */
