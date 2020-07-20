@@ -293,7 +293,7 @@ class Form extends Component {
 
             <div className="field">
               <label htmlFor="mobile">Mobile Number:</label>
-              <input type="text" id="mobile" name="mobile" />
+              <input type="number" id="mobile" name="mobile" pattern="[0-9]*" inputmode="numeric"/>
             </div>
 
             {this.renderSelect("fieldOfStudy", "Field of Study", "Select the field you study", studyFields)}

@@ -57,7 +57,8 @@
     }
   }
 
-  .privacy-policy, .livedInUK5Years {
+  .privacy-policy,
+  .livedInUK5Years {
     display: flex;
     justify-content: center;
     margin-bottom: 1em;
@@ -78,7 +79,8 @@
       top: -6px;
     }
 
-    .privacy-text, .livedInUK5Years-text {
+    .privacy-text,
+    .livedInUK5Years-text {
       margin-left: 1em;
     }
   }
@@ -125,7 +127,7 @@
 
     .btn {
       padding: 0.5em 1em;
-      width: 6em //110px;
+      width: 6em; //110px;
     }
 
     .clear-btn {
@@ -135,5 +137,17 @@
         background-color: black;
       }
     }
+  }
+
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
   }
 }
