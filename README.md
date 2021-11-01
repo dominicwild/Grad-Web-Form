@@ -8,6 +8,8 @@ The form features a simple login so that a group of people or organisation can h
 - React is used for the Front end
 - A node.js server serves to mock the data coming back to display in the list elements for viable values
 - SCSS was used for styling
+- Backend is contained in [this repo to manage database API's](https://github.com/dominicwild/Graduate-Web-Form-API). Using AWS Lambas, a MySQL database and Sequelize to manage the creation and API code.
+
 
 ## Basic Features
 The login page gives simple notifications for when an error occurs.
