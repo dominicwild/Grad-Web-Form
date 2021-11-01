@@ -264,7 +264,7 @@ class Form extends Component {
         <LoginLoadingOverlay loadingText="Sending" maxDots={4} overlayElementId="beaconForm" loading={this.state.sending}/>
         <form className="form-container" id="form" onSubmit={(e) => e.preventDefault()}>
           <div className="form-header">
-            <h1>DXC Beacon</h1>
+            <h1>Beacon</h1>
             <h2>Please fill out the fields below:</h2>
             <h3>* required field</h3>
           </div>
@@ -316,7 +316,7 @@ class Form extends Component {
                 <input type="checkbox" name="privacyPolicy" id="privacyPolicy" required />
               </span>
               <span className="privacy-text">
-                I agree to DXC's <a href="#privacyPolicy">Privacy Policy</a>
+                I agree to the <a href="#privacyPolicy">Privacy Policy</a>
               </span>
             </label>
           </div>

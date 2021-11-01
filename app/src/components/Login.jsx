@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../css/Login.css";
 import SVG from "react-inlinesvg";
-import logo from "../img/DXC_Technology_logo.svg";
+import logo from "../img/logoipsum-logo.svg";
 import loading from "../img/loading.svg";
 import { navigate } from "@reach/router";
 import { toastr } from "react-redux-toastr";
@@ -79,7 +79,7 @@ class Login extends Component {
         <div className="login">
           <LoginLoadingOverlay loadingText={loadingText} maxDots={4} overlayElementId="loginCard" loading={this.state.loggingIn} />
           <div className="login-card-content" id="loginCard">
-            <h1>DXC Beacon Login</h1>
+            <h1>Beacon Login</h1>
             {this.renderControls()}
             <div className="footer">
               <SVG src={logo} />

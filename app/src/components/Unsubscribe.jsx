@@ -58,10 +58,10 @@ class Unsubscribe extends Component {
           <LoginLoadingOverlay loadingText={"Processing"} maxDots={4} overlayElementId="form" loading={this.state.loading}/>
           <form className="form-container" id="form" onSubmit={(e) => e.preventDefault()}>
             <div className="form-header">
-              <h1>DXC Beacon</h1>
+              <h1>Beacon</h1>
             </div>
-            <p>In order to unsubscribe from the DXC graduate and apprenticeship scheme mailing list, please confirm your email below.</p>
-            <p>This will remove all your data from our records and you will not recieve any further emails from DXC.</p>
+            <p>In order to unsubscribe from the graduate and apprenticeship scheme mailing list, please confirm your email below.</p>
+            <p>This will remove all your data from our records and you will not recieve any further emails.</p>
             <div className="form-fields">
               <div className="field">
                 <label htmlFor="emailConfirm">Confirm Email</label>
